@@ -13,7 +13,9 @@ function App() {
       <div className="content">
         <Home/>
       </div>
-      {/* <div className="content">
+      {
+      
+      /* <div className="content">
         <h1>{ title }</h1>
         <p>Liked { likes } times.</p>
 

@@ -1,4 +1,4 @@
-const Bloglist = (/* props */{blogs, title}) => {
+const Bloglist = (/* props */{blogs, title, /* handleDelete */}) => {
 
  /*  const blogs = props.blogs;
   const title = props.title; */
@@ -9,7 +9,8 @@ const Bloglist = (/* props */{blogs, title}) => {
        {blogs.map((blog)=>(
         <div className="blog-preview" key={blog.id}>
           <h2>{blog.title}</h2>
-          <p>Written by {blog.author}</p>          
+          <p>Written by {blog.author}</p>
+          {/* <button onClick={() =>{handleDelete(blog.id)}}>Delete Blog</button>  */}      
         </div>
         ))}
     </div>

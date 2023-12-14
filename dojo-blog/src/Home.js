@@ -1,7 +1,10 @@
 import {useState, useEffect} from 'react';
 import Bloglist from './Bloglist';
+import useFetch from './useFetch';
 
 const Home = () => {
+  const {data: blogs, isPending, error } = useFetch('http://localhost:8000/blogs');
+
 
   //let name = 'mario';
   /* const [name, setName] = useState('mario');
@@ -15,8 +18,6 @@ const Home = () => {
 /*   const handleClickAgain = (name) => {
     console.log('Hello ' + name);
   } */
-  const [ blogs, setBlogs ] = useState(null);
-  const [isPending, setIsPending] = useState(true);
 /* 
   const [name,setName] = useState('Mario'); */
 
@@ -25,20 +26,11 @@ const Home = () => {
     setBlogs(newBlogs);
   } */
 
-  useEffect(()=> {
-    setTimeout(() => {fetch('http://localhost:8000/blogs')
-    .then(res => {
-      return res.json()
-    })
-    .then((data)=>{
-      setBlogs(data);
-      setIsPending(false);
-    })      
-    }, 1000);
-  }, [/* name */]);
+  
 
   return (
     <div className="home">
+      { error && <div>{ error }</div>}
       {isPending && <div>Loading...</div>}
       {blogs && <Bloglist blogs={blogs} title="All Blogs" /* handleDelete={handleDelete} *//>}
       {/* <Bloglist blogs={blogs.filter((blog)=> blog.author === 'Mario')} title="Mario's Blogs"/>
@@ -54,4 +46,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;
